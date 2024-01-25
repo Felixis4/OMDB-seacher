@@ -12,6 +12,7 @@ node app.js
 
 * go to your browser and write 
 
-http://localhost:3000/[movieTitle]
+http://localhost:3000/
 
-(change [movieTitle] for the title of the movie you want seach).
+* seach
+write the name of the movie you want to seach in the body 
