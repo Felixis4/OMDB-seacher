@@ -29,7 +29,7 @@ app.post('/', async (req, res) => {
       });
     };
   } catch (error) {
-    res.status(500).json({ error: 'That movie is not on this Database' });
+    res.status(500).json({ error: `Cannot GET /${movieTitle}` });
   }
 });
 
