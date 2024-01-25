@@ -4,23 +4,23 @@ const express = require('express');
 const app = express();
 const PORT = 3000;
 
-app.get('/:movieTitle', async (req, res) => {
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+
+app.post('/', async (req, res) => {
 
   const API_KEY = 'd2665a5b';
-  const movieTitle = req.params.movieTitle;
+  const movieTitle = req.body.movieTitle;
 
   try{
     const apiUrl = `http://www.omdbapi.com/?apikey=${API_KEY}&t=${encodeURIComponent(movieTitle)}`;
     const response = await axios.get(apiUrl);
     
     const movie = response.data;
-    const movieDetails= {
-        Director: movie.Director,
-        Year: movie.Year
-    };
-
-    res.json(movieDetails);
-
+    res.json({
+      Director: movie.Director,
+      Year: movie.Year
+    });
   } catch (error) {
     res.status(500).json({ error: 'That movie is not on this Database' });
   }
