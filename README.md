@@ -16,4 +16,6 @@ http://localhost:3000/
 
 * seach
 
+set the method on POST
+
 write the name of the movie you want to seach in the body 
