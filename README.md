@@ -21,6 +21,8 @@ set the method on POST
 write the name of the movie you want to seach in the body like this
 
 {
+
   "movieTitle": "Titanic"
+  
 }
 
