@@ -17,10 +17,17 @@ app.post('/', async (req, res) => {
     const response = await axios.get(apiUrl);
     
     const movie = response.data;
-    res.json({
-      Director: movie.Director,
-      Year: movie.Year
-    });
+
+    if (movie.Response === 'False') {
+      
+      res.status(404).json({ error: 'Movie not found in the database' });
+    } else {
+      
+      res.json({
+        Director: movie.Director,
+        Year: movie.Year
+      });
+    };
   } catch (error) {
     res.status(500).json({ error: 'That movie is not on this Database' });
   }
